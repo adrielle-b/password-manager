@@ -1,4 +1,5 @@
 import React, { useContext, useState } from 'react';
+import Swal from 'sweetalert2';
 import { GlobalContext } from '../context/GlobalProvider';
 
 function Form() {
@@ -40,11 +41,12 @@ function Form() {
     const newService = { name, login, senha, url };
     setServices([...services, newService]);
     setShowForm(false);
-    setInputs({
-      name: '',
-      login: '',
-      senha: '',
-      url: '',
+    setInputs({ name: '', login: '', senha: '', url: '' });
+    Swal.fire({
+      icon: 'success',
+      text: 'Serviço cadastrado com sucesso!',
+      showConfirmButton: false,
+      timer: 1500,
     });
   };
 
