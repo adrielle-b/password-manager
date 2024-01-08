@@ -26,6 +26,12 @@ function Form() {
     return isValid;
   };
 
+  const displayValidation = (regex: RegExp) => {
+    return regex.test(inputs.senha)
+      ? 'valid-password-check'
+      : 'invalid-password-check';
+  };
+
   return (
     showForm ? (
       <form>
@@ -71,6 +77,13 @@ function Form() {
 
         <button type="button" disabled={ !formIsValid() }>Cadastrar</button>
         <button type="button" onClick={ () => setShowForm(false) }>Cancelar</button>
+
+        <div>
+          <p className={ `${displayValidation(/.{8,}/)}` }>Possuir 8 ou mais caracteres</p>
+          <p className={ `${displayValidation(/^.{0,16}$/)}` }>Possuir até 16 caracteres</p>
+          <p className={ `${displayValidation(/^(?=.*[a-zA-Z])(?=.*\d).+$/)}` }>Possuir letras e números</p>
+          <p className={ `${displayValidation(/[@#$%^&+=!]/)}` }>Possuir algum caractere especial</p>
+        </div>
 
       </form>
     ) : (
