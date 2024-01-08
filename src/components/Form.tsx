@@ -10,6 +10,7 @@ function Form() {
     url: '',
   });
   const { services, setServices } = useContext(GlobalContext);
+  const [showPassword, setShowPassword] = useState(false);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputs({
@@ -71,11 +72,18 @@ function Form() {
         <label htmlFor="senha">
           Senha
           <input
-            type="password"
+            type={ showPassword ? 'text' : 'password' }
             id="senha"
             value={ inputs.senha }
             onChange={ (e) => handleChange(e) }
           />
+          <button
+            type="button"
+            data-testid="show-hide-form-password"
+            onClick={ () => setShowPassword(!showPassword) }
+          >
+            Exibir
+          </button>
         </label>
         <label htmlFor="url">
           URL
