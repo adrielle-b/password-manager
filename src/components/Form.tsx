@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { GlobalContext } from '../context/GlobalProvider';
 
 function Form() {
   const [showForm, setShowForm] = useState(false);
@@ -8,6 +9,7 @@ function Form() {
     senha: '',
     url: '',
   });
+  const { services, setServices } = useContext(GlobalContext);
 
   const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputs({
@@ -32,10 +34,22 @@ function Form() {
       : 'invalid-password-check';
   };
 
+  const serviceAdd = () => {
+    const { name, login, senha, url } = inputs;
+    const newService = { name, login, senha, url };
+    setServices([...services, newService]);
+    setShowForm(false);
+    setInputs({
+      name: '',
+      login: '',
+      senha: '',
+      url: '',
+    });
+  };
+
   return (
     showForm ? (
       <form>
-
         <label htmlFor="name">
           Nome do serviço
           <input
@@ -45,7 +59,6 @@ function Form() {
             onChange={ (e) => handleChange(e) }
           />
         </label>
-
         <label htmlFor="login">
           Login
           <input
@@ -55,7 +68,6 @@ function Form() {
             onChange={ (e) => handleChange(e) }
           />
         </label>
-
         <label htmlFor="senha">
           Senha
           <input
@@ -65,7 +77,6 @@ function Form() {
             onChange={ (e) => handleChange(e) }
           />
         </label>
-
         <label htmlFor="url">
           URL
           <input
@@ -74,17 +85,20 @@ function Form() {
             onChange={ (e) => handleChange(e) }
           />
         </label>
-
-        <button type="button" disabled={ !formIsValid() }>Cadastrar</button>
+        <button
+          type="button"
+          disabled={ !formIsValid() }
+          onClick={ serviceAdd }
+        >
+          Cadastrar
+        </button>
         <button type="button" onClick={ () => setShowForm(false) }>Cancelar</button>
-
         <div>
           <p className={ `${displayValidation(/.{8,}/)}` }>Possuir 8 ou mais caracteres</p>
           <p className={ `${displayValidation(/^.{0,16}$/)}` }>Possuir até 16 caracteres</p>
           <p className={ `${displayValidation(/^(?=.*[a-zA-Z])(?=.*\d).+$/)}` }>Possuir letras e números</p>
           <p className={ `${displayValidation(/[@#$%^&+=!]/)}` }>Possuir algum caractere especial</p>
         </div>
-
       </form>
     ) : (
       <button type="button" onClick={ () => setShowForm(true) }>
