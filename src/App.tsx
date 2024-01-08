@@ -7,7 +7,7 @@ import ServiceProvider from './context/GlobalProvider';
 function App() {
   return (
     <ServiceProvider>
-      <div>
+      <div className="bg-gray-950 min-h-screen">
         <Header />
         <Form />
         <Services />

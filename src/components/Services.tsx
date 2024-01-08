@@ -12,7 +12,9 @@ function Services() {
 
   return (
     <section>
-      {services.length === 0 ? (<p>Nenhuma senha cadastrada</p>) : (
+      {services.length === 0 ? (
+        <p className="text-center text-xl text-slate-500">Nenhuma senha cadastrada</p>
+      ) : (
         <>
           <label htmlFor="showPassword">
             Esconder senhas

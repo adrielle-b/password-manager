@@ -52,7 +52,7 @@ function Form() {
 
   return (
     showForm ? (
-      <form>
+      <form className="bg-stone-200 flex-col justify-items-center">
         <label htmlFor="name">
           Nome do serviço
           <input
@@ -111,9 +111,22 @@ function Form() {
         </div>
       </form>
     ) : (
-      <button type="button" onClick={ () => setShowForm(true) }>
-        Cadastrar nova senha
-      </button>
+      <div
+        className="flex justify-center items-center"
+      >
+        <button
+          type="button"
+          onClick={ () => setShowForm(true) }
+          className="sm:w-1/4
+        text-orange-600
+        bg-gray-950
+        border-2
+        border-orange-600
+        rounded-lg px-4 py-2 m-4 hover:bg-orange-600 hover:text-stone-200"
+        >
+          Cadastrar nova senha
+        </button>
+      </div>
     )
   );
 }
