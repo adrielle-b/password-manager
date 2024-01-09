@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaLock } from 'react-icons/fa';
 
 function Header() {
   return (
@@ -8,9 +9,12 @@ function Header() {
       font-medium
       text-center
       tracking-wider
-      text-orange-600"
+      text-orange-600
+      pt-14
+      mb-28"
       >
         Gerenciador de senhas
+        <FaLock className="inline-block ml-3 text-4xl" />
       </h1>
     </header>
   );

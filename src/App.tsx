@@ -7,11 +7,11 @@ import ServiceProvider from './context/GlobalProvider';
 function App() {
   return (
     <ServiceProvider>
-      <div className="bg-gray-950 min-h-screen">
+      <main className="bg-gray-950 h-screen">
         <Header />
         <Form />
         <Services />
-      </div>
+      </main>
     </ServiceProvider>
   );
 }

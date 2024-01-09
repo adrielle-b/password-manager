@@ -122,6 +122,7 @@ function Form() {
         bg-gray-950
         border-2
         border-orange-600
+        mb-8
         rounded-lg px-4 py-2 m-4 hover:bg-orange-600 hover:text-stone-200"
         >
           Cadastrar nova senha
