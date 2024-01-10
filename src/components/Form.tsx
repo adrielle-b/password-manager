@@ -48,6 +48,8 @@ function Form() {
       text: 'Serviço cadastrado com sucesso!',
       showConfirmButton: false,
       timer: 1500,
+      background: '#0d1b2a',
+      color: '#f77f00',
     });
   };
 
@@ -118,8 +120,8 @@ function Form() {
               type="button"
               disabled={ !formIsValid() }
               onClick={ serviceAdd }
-              className="text-orange-600  bg-gray-950 border-2 border-orange-600 mb-8
-            rounded-lg px-4 py-2 m-4 hover:bg-orange-600 hover:text-stone-200"
+              className="text-orange-600 bg-gray-950 border-2 border-orange-600 rounded-lg
+              mb-8 px-4 py-2 m-4 hover:bg-orange-600 hover:text-stone-200 cursor-pointer"
             >
               Cadastrar
             </button>
